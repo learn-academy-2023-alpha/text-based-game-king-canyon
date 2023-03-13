@@ -52,12 +52,12 @@ enemy_stats = { health: 20}
 # Attack Method
 def attack (enemy_stats)
     
-enemy_stats[:health] -= 1 
-enemy_attack    
+    enemy_stats[:health] -= 1 
+    enemy_attack    
 end
 puts enemy_stats 
 
-attack(enemy_stats)
+    attack(enemy_stats)
 
 puts enemy_stats
 
@@ -67,9 +67,9 @@ def enemy_attack (player_stats)
     
     player_stats[:health] -= 1 
         
-    end
-    puts player_stats 
+end
+puts player_stats 
     
-    enemy_attack(player_stats)
+enemy_attack(player_stats)
     
-    puts player_stats
+puts player_stats
