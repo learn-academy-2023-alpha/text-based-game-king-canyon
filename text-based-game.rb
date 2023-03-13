@@ -42,24 +42,21 @@
 # Hero's message: you have been granted 3 potions, 1 revival leaf, 1 short sword, and 1 shield. 
 # ------------------------------
 # Game Status
-player_stats = { health: 15, potions: 3, revival_leaf: 1, short_sword: 1, shield: 1 }
+player_stats = { health: 5, potions: 3, revival_leaf: 1, short_sword: 1, shield: 1}
+enemy_stats = { health: 10}
 
-p player_stats
+p "pick an action"
+player_action = gets.chomp
 
-enemy_stats = { health: 20}
-
-# --------------------------------------
-# Attack Method
-def attack (enemy_stats)
-    
-    enemy_stats[:health] -= 1 
-    enemy_attack    
+def turn_logic(input, player_stats, enemy_stats)
+    if input.downcase == 'check stats'
+        p "you have #{player_stats [:health]} health and #{player_stats [:potions]} healing potions. your enemy has #{enemy_stats [:health]} health left"
+    else
+        p "invalid input"
+    end
 end
-puts enemy_stats 
 
-    attack(enemy_stats)
 
-puts enemy_stats
 
 # ----------------------------------------
 # Enemies Attack
@@ -73,3 +70,15 @@ puts player_stats
 enemy_attack(player_stats)
     
 puts player_stats
+
+# --------------------------------------
+# Attack Method
+def attack (input)
+
+    enemy_stats[:health] -= 1 
+    enemy_attack    
+end
+puts enemy_stats 
+    attack(enemy_stats)
+puts enemy_stats
+# turn_logic(player_action, player_stats, enemy_stats)
