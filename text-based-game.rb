@@ -40,11 +40,36 @@
 # Hero's mission: Slay the enemy in front of you, survive for another day. 
 
 # Hero's message: you have been granted 3 potions, 1 revival leaf, 1 short sword, and 1 shield. 
-
+# ------------------------------
+# Game Status
 player_stats = { health: 15, potions: 3, revival_leaf: 1, short_sword: 1, shield: 1 }
 
 p player_stats
 
 enemy_stats = { health: 20}
 
+# --------------------------------------
+# Attack Method
+def attack (enemy_stats)
+    
+    enemy_stats[:health] -= 1 
+    enemy_attack    
+end
+puts enemy_stats 
 
+    attack(enemy_stats)
+
+puts enemy_stats
+
+# ----------------------------------------
+# Enemies Attack
+def enemy_attack (player_stats)
+    
+    player_stats[:health] -= 1 
+        
+end
+puts player_stats 
+    
+enemy_attack(player_stats)
+    
+puts player_stats
