@@ -42,34 +42,113 @@
 # Hero's message: you have been granted 3 potions, 1 revival leaf, 1 short sword, and 1 shield. 
 # ------------------------------
 # Game Status
-player_stats = { health: 15, potions: 3, revival_leaf: 1, short_sword: 1, shield: 1 }
+player_stats = { health: 5, potions: 3, revival_leaf: 1, short_sword: 1, shield: 1}
+enemy_stats = { health: 4}
 
-p player_stats
+def attack(input, enemy_stats)
+    enemy_stats[:health] -= 1
+    p "You punched the dragon! Their health is now #{enemy_stats[:health]}"
+  end
+  
+  def enemy_attack(player_stats)
+    player_stats[:health] -= 1
+    p "The dragon punched you back! your health is now #{player_stats[:health]}"
+  end
+  
+  def turn_logic(input, player_stats, enemy_stats)
+    case input.downcase
+    when "attack"
+      attack(input, enemy_stats)
+      enemy_attack(player_stats)
+    when "check stats"
+      p "You have #{player_stats[:health]} health and #{player_stats[:potions]} healing potions. Your enemy has #{enemy_stats[:health]} health left."
+    else
+      p "Invalid input."
+    end
+  end
+  
+  while enemy_stats[:health] > 0 || player_stats[:health] > 0
+    if enemy_stats[:health] == 0 || player_stats[:health] == 0
+        p "Game Over, The dragon has perished."
+    return end 
+        p "Pick an action"
+    player_action = gets.chomp
+    turn_logic(player_action, player_stats, enemy_stats)
+  end
+ 
 
-enemy_stats = { health: 20}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def turn_logic(input, player_stats, enemy_stats)
+#     case input.downcase
+#     when 'check stats'
+#         p "you have #{player_stats [:health]} health and #{player_stats [:potions]} healing potions. your enemy has #{enemy_stats [:health]} health left"
+#     when 'attack'
+#         attack(input, enemy_stats)
+#     else
+#         p "invalid input"
+#     end
+# end
+
+
+# def attack_logic(player_attack)
+#     if player_attack == 'attack'
+#         p "You swing your sword at the dragon. It loses health" 
+#         p enemy_stats[:health] -1 
+#     end
+# end
+
+# p attack_logic(enemy_stats[:health])
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # --------------------------------------
 # Attack Method
-def attack (enemy_stats)
-    
-    enemy_stats[:health] -= 1 
-    enemy_attack    
-end
-puts enemy_stats 
+# def player_attack(enemy_stats)
 
-    attack(enemy_stats)
-
-puts enemy_stats
+#     enemy_stats[:health] -= 1 
+#     # enemy_attack    
+# end
+# puts enemy_stats 
+#     player_attack(enemy_stats)
+# puts enemy_stats
 
 # ----------------------------------------
 # Enemies Attack
-def enemy_attack (player_stats)
+# def enemy_attack (player_stats, enemy_stats)
     
-    player_stats[:health] -= 1 
+#     player_stats[:health] -= 1 
         
-end
-puts player_stats 
+# end
+# puts player_stats 
     
-enemy_attack(player_stats)
+# player_attack(player_stats, enemy_stats)
     
-puts player_stats
+# puts player_stats
+turn_logic(player_action, player_stats, enemy_stats)
